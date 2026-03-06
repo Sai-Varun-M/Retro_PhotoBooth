@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Photo Booth - Paris</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="flash" class="flash-overlay"></div>
+
+    <div class="booth-container">
+
+        <!-- Left Side: Controls & Viewfinder -->
+        <main class="booth-main">
+            <header class="booth-header">
+                <h1>The Photo Booth</h1>
+                <p class="subtitle">Capture the moment - Paris, 1920</p>
+            </header>
+
+            <div class="viewfinder-frame">
+                <div class="viewfinder-inner">
+                    <video id="videoElement" autoplay playsinline></video>
+                    <div id="countdown" class="countdown-display hidden">3</div>
+                </div>
+            </div>
+
+            <div class="controls-panel">
+                <div class="filters">
+                    <span class="filter-label">Filters:</span>
+                    <button class="filter-btn active" data-filter="none">Normal</button>
+                    <button class="filter-btn" data-filter="sepia(60%) contrast(1.2) brightness(0.9)">Sepia</button>
+                    <button class="filter-btn" data-filter="grayscale(100%) contrast(1.3)">Black & White</button>
+                    <button class="filter-btn"
+                        data-filter="contrast(1.4) saturate(1.5) sepia(20%) hue-rotate(-10deg)">Vintage</button>
+                    <button class="filter-btn" data-filter="grayscale(100%) contrast(1.5) brightness(0.8)">Film
+                        Noir</button>
+                    <button class="filter-btn"
+                        data-filter="sepia(30%) contrast(1.1) brightness(1.1) saturate(0.8) hue-rotate(-15deg)">Faded
+                        Polaroid</button>
+                    <button class="filter-btn" data-filter="sepia(40%) saturate(1.5) contrast(1.1) brightness(1.1)">Warm
+                        Glow</button>
+                    <button class="filter-btn"
+                        data-filter="sepia(20%) saturate(1.2) hue-rotate(180deg) brightness(1.1)">Cool Cyan</button>
+                    <button class="filter-btn" data-filter="sepia(50%) hue-rotate(330deg) saturate(1.5)">Rose
+                        Tint</button>
+                    <button class="filter-btn"
+                        data-filter="contrast(1.3) brightness(1.1) sepia(20%) blur(1px)">Dreamy</button>
+                    <button class="filter-btn"
+                        data-filter="saturate(2) contrast(1.2) hue-rotate(15deg)">Technicolor</button>
+                    <button class="filter-btn" data-filter="contrast(2) brightness(0.9) grayscale(100%)">High
+                        Contrast</button>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="captureBtn" class="capture-btn">
+                        <span class="btn-inner">Take the Photo</span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="statusMessage" class="status-message">Ready to photograph (5 poses)</div>
+        </main>
+
+        <!-- Right Side: The Printed Strip -->
+        <aside class="strip-panel">
+            <h2 class="strip-title">Your Souvenir</h2>
+            <div class="strip-container" id="stripContainer">
+                <div class="placeholder-strip">
+                    <div class="placeholder-box"></div>
+                    <div class="placeholder-box"></div>
+                    <div class="placeholder-box"></div>
+                    <div class="placeholder-box"></div>
+                    <div class="placeholder-box"></div>
+                </div>
+                <!-- The generated canvas strip will be injected here -->
+            </div>
+            <button id="downloadBtn" class="download-btn" disabled>Download</button>
+        </aside>
+
+    </div>
+
+    <!-- Hidden canvas used for processing -->
+    <canvas id="captureCanvas" style="display:none;"></canvas>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
